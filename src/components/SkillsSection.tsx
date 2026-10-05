@@ -1,61 +1,90 @@
-import { useEffect, useRef, useState } from 'react';
-
-const skills = [
-  { name: 'Python', level: 95 },
-  { name: 'NLP & Transformers', level: 90 },
-  { name: 'LLM, RAG & Langchain', level: 85 },
-  { name: 'Docker', level: 75 },
-  { name: 'Machine Learning', level: 90 },
-  { name: 'SQL & Data Handling', level: 85 },
-  { name: 'Test Automation (Pytest/Appium)', level: 80 },
-  { name: 'Docker', level: 75 },
-  { name: 'AWS Cloud Basics', level: 55 },
-  { name: 'Software Engineering', level: 85 },
-  { name: 'Git & GitHub', level: 90 },
-  { name: 'Microsoft Office', level: 100 },
+const skillGroups = [
+  {
+    title: 'Agentic AI and GenAI',
+    skills: [
+      'LangGraph',
+      'LangChain',
+      'Multi-Agent Systems',
+      'Human-in-the-Loop',
+      'LLMs',
+      'Prompt Engineering',
+      'LoRA / PEFT',
+      'vLLM'
+    ],
+  },
+  {
+    title: 'RAG and Retrieval',
+    skills: [
+      'Hybrid Search',
+      'FAISS / HNSW',
+      'BM25',
+      'Cross-Encoder Reranking',
+      'Cohere Rerank',
+      'HyDE',
+      'Guardrails',
+    ],
+  },
+  {
+    title: 'Machine Learning and NLP',
+    skills: [
+      'Python',
+      'PyTorch',
+      'scikit-learn',
+      'XGBoost',
+      'Decision Trees',
+      'Random Forest',
+      'TF-IDF / SVD',
+      'NLP',
+      'SQL',
+    ],
+  },
+  {
+    title: 'MLOps and Serving',
+    skills: [
+      'FastAPI',
+      'Docker',
+      'MLflow',
+      'Langfuse',
+      'Jenkins / CI-CD',
+      'Git',
+      'AWS (EC2, S3, Bedrock, Sagemaker)',
+      'Terraform'
+    ],
+  },
+  {
+    title: 'Automotive AI and Testing',
+    skills: [
+      'DLT Logs',
+      'CAN Bus',
+      'Appium',
+      'Pytest',
+      'ADB',
+      'Android Automotive OS',
+    ],
+  },
 ];
 
 const SkillsSection = () => {
-  const [animated, setAnimated] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setAnimated(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-20 px-4 md:px-8">
+    <section id="skills" className="py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title mb-12">Skills</h2>
 
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
-          {skills.map((skill, index) => (
-            <div key={index}>
-              <div className="flex justify-between mb-2">
-                <span className="text-foreground font-medium">{skill.name}</span>
-                <span className="text-primary">{skill.level}%</span>
-              </div>
-              <div className="skill-bar">
-                <div
-                  className="skill-bar-fill"
-                  style={{
-                    width: animated ? `${skill.level}%` : '0%',
-                    transitionDelay: `${index * 100}ms`,
-                  }}
-                />
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
+          {skillGroups.map((group) => (
+            <div key={group.title}>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                {group.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 rounded-full bg-secondary text-sm text-foreground border border-border"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
