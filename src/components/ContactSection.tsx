@@ -1,6 +1,13 @@
 import { useState } from 'react';
-import { MapPin, Mail, Phone, Send } from 'lucide-react';
+import { MapPin, Mail, Linkedin, Github, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+
+// Create a free form at https://formspree.io, then paste your form ID here (e.g. 'xyzabcde').
+const FORMSPREE_ID = 'https://formspree.io/f/mbgdjrrn';
+
+const EMAIL = 'amreetnanda321@gmail.com';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/amreet-nanda-5a2507241/';
+const GITHUB_URL = 'https://github.com/AmreetNanda';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -15,21 +22,39 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
-    
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Request failed');
+
+      toast({
+        title: 'Message sent',
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch {
+      toast({
+        title: 'Could not send message',
+        description: `Please email me directly at ${EMAIL}.`,
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -39,9 +64,10 @@ const ContactSection = () => {
     <section id="contact" className="py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title mb-6">Contact</h2>
-        
+
         <p className="text-muted-foreground mb-8 max-w-6xl">
-          Data is valuable only when it's understood the right way. I specialize in selecting the right tools and building data solutions that empower teams to make smarter, data-driven decisions. Let's connect and turn insights into impact.
+          Open to AI/ML Engineer and GenAI Engineer roles in Bengaluru. If you are building
+          agentic AI, RAG or LLM systems, I would like to hear from you.
         </p>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -56,24 +82,53 @@ const ContactSection = () => {
                 <p className="text-muted-foreground">Bengaluru, India</p>
               </div>
             </div>
-            
+
             <div className="contact-info-box">
               <div className="info-icon">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
                 <h4 className="text-foreground font-semibold mb-1">Email:</h4>
-                <p className="text-muted-foreground">amreetnanda321@gmail.com</p>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {EMAIL}
+                </a>
               </div>
             </div>
-            
+
             <div className="contact-info-box">
               <div className="info-icon">
-                <Phone className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-foreground font-semibold mb-1">Call:</h4>
-                <p className="text-muted-foreground">+91 832 776 1667</p>
+                <h4 className="text-foreground font-semibold mb-1">LinkedIn:</h4>
+                <a
+                  href={LINKEDIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  amreet-nanda
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-info-box">
+              <div className="info-icon">
+                <Github className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-foreground font-semibold mb-1">GitHub:</h4>
+                <a
+                  href={GITHUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  AmreetNanda
+                </a>
               </div>
             </div>
           </div>
