@@ -1,9 +1,9 @@
 import { Download } from 'lucide-react';
 
-const JOB_TITLE = 'Software Development Analyst'; // use your official Accenture title
-const OPTUM_PERIOD = '[Mar 2024] - [Sep 2024]'; // e.g. 'Jan 2025 - Jul 2025'
-const ECU_BEFORE = '[3 hours]'; // e.g. '3 hours'
-const ECU_AFTER = '[40 minutes]'; // e.g. '40 minutes'
+const JOB_TITLE = 'Software Development Analyst'; 
+const OPTUM_PERIOD = '[Mar 2024] - [Sep 2024]'; 
+const ECU_BEFORE = '[3 hours]'; 
+const ECU_AFTER = '[40 minutes]'; 
 
 const experience = [
   {
