@@ -1,4 +1,4 @@
-import { BarChart3, LineChart, PieChart, Database, Search, Server } from 'lucide-react';
+// import { BarChart3, LineChart, PieChart, Database, Search, Server } from 'lucide-react';
 import { Network,  FileSearch,  ScrollText,  GitBranch,  Gauge,  SlidersHorizontal} from 'lucide-react';
 
 const services = [
@@ -47,7 +47,7 @@ const ServicesSection = () => {
             <ul className="space-y-2 text-muted-foreground">
               <li>• Designed LangGraph multi-agent workflows with <strong className="text-foreground">Coordinator → Domain → Specialist</strong> routing for automotive defect RCA across <strong className="text-foreground">100+ defect areas</strong></li>
               <li>• Implemented <strong className="text-foreground">A2A task contracts, shared state, schema validation, retries, failure handling and controlled agent handoffs</strong></li>
-              <li>• Added <strong className="text-foreground">Human-in-the-Loop review</strong>, confidence-based routing and validation guardrails for final diagnostic decisions 
+              <li>• Added <strong className="text-foreground">Human-in-the-Loop review</strong>, confidence-based routing and validation guardrails for final diagnostic decisions </li>
               <li>• Evaluated agent routing and workflow reliability using <strong className="text-foreground">accuracy, failure/retry behavior and expert acceptance</strong></li>
             </ul>
           </div>
@@ -66,9 +66,9 @@ const ServicesSection = () => {
             <ul className="space-y-2 text-muted-foreground">
               <li>• LLM application development with <strong className="text-foreground">prompt engineering, structured outputs and centralized LLM gateways</strong> </li>
               <li>• <strong className="text-foreground">LoRA/PEFT</strong> fine-tuning and domain-specific NLP workflows</li>
-              <li>•	RAG evaluation using <strong className="text-foreground">RAGAS, groundedness/relevance metrics and retrieval evaluation</strong></li>
+              <li>•	RAG evaluation using <strong className="text-foreground">RAGAS, groundedness/relevance metrics and retrieval evaluation</strong> </li>
               <li>• Observability with <strong className="text-foreground">Langfuse / MLflow </strong></li>
-              <li>• Guardrails, validation and <strong className="text-foreground">Human-in-the-Loop escalation </strong></li>
+              <li>• Guardrails, validation and <strong className="text-foreground">Human-in-the-Loop escalation</strong> </li>
               <li>• Model/version tracking and reproducible AI workflows</li>
             </ul>
           </div>
@@ -99,7 +99,7 @@ const ServicesSection = () => {
             <h3 className="text-xl font-semibold text-foreground mb-4">MLOps and Serving:</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>• FastAPI services, Docker, MLflow, Langfuse, Jenkins and CI/CD</li>
-              <li>• AWS: EC2, S3, Bedrock, Sagemaker, Bedrock</li>
+              <li>• AWS: EC2, S3, Bedrock, Sagemaker</li>
             </ul>
           </div>
 
