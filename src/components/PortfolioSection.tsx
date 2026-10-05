@@ -10,7 +10,7 @@ const featuredProjects = [
     description:
       'LangGraph multi-agent platform for defect triage and evidence-grounded root cause analysis across 100+ defect areas, with human review. Routing accuracy 82 to 96 percent and triage time 45 to under 8 minutes (internal evaluation).',
     stack: 'LangGraph, XGBoost, FAISS, BM25, Docker, MLflow, Langfuse',
-    image: '/projects/rca-architecture.png', // your own redrawn diagram, no client data
+    image: 'https://ismg-cdn.nyc3.cdn.digitaloceanspaces.com/articles/agentic-ai-next-frontier-for-enterprises-showcase_image-3-a-26933.jpg', 
     category: 'Agents',
     note: 'Client project, code not public',
   },
@@ -19,7 +19,7 @@ const featuredProjects = [
     description:
       'Development-phase contribution to an enterprise RAG system over 10K+ documents: ingestion, chunking, hybrid retrieval with Cross-Encoder and Cohere reranking, HyDE and the FastAPI serving layer.',
     stack: 'LangChain, FastAPI, FAISS HNSW, BM25, Cohere, Langfuse',
-    image: '/projects/enterprise-rag-flow.png', // generic retrieval-flow diagram
+    image: 'https://framerusercontent.com/images/oMKLlfdOJj9X7upDZk1wVEDDCw.png?scale-down-to=2048&width=2752&height=1536', 
     category: 'RAG',
     note: 'Client project, code not public',
   },
@@ -58,7 +58,7 @@ const featuredProjects = [
     description:
       'Framework that turns natural language requirements into executable tests, with ML-based failure prediction and self-healing locators for Android Automotive OS.',
     stack: 'Python, Appium, Pytest, NLP, scikit-learn, ADB',
-    image: '/projects/aaos-test-automation.png', // your own diagram
+    image: 'https://www.kualitatem.com/wp-content/uploads/2023/06/BLOG-Image-01-scaled-1-2048x1152.jpg', 
     category: 'Automation',
     note: 'Internal R&D, code not public',
   },
