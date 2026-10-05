@@ -51,17 +51,8 @@ const ServicesSection = () => {
               <li>• Evaluated agent routing and workflow reliability using <strong className="text-foreground">accuracy, failure/retry behavior and expert acceptance</strong></li>
             </ul>
           </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-foreground mb-4">RAG and Retrieval:</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>• Hybrid BM25 plus vector search with FAISS and HNSW</li>
-              <li>• Cross-Encoder and Cohere reranking, HyDE, query-aware retrieval</li>
-              <li>•	Chunking, metadata enrichment, evidence-grounded answers and guardrails</li>
-            </ul>
-          </div>
-
-          <div>
+          
+           <div>
             <h3 className="text-xl font-semibold text-foreground mb-4">LLM Engineering & Evaluation:</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>• LLM application development with <strong className="text-foreground">prompt engineering, structured outputs and centralized LLM gateways</strong> </li>
@@ -71,7 +62,7 @@ const ServicesSection = () => {
               <li>• Guardrails, validation and <strong className="text-foreground">Human-in-the-Loop escalation</strong> </li>
               <li>• Model/version tracking and reproducible AI workflows</li>
             </ul>
-          </div>
+          </div>       
              
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-4">Machine Learning:</h3>
@@ -94,6 +85,15 @@ const ServicesSection = () => {
               <li>• Strong background in  <strong className="text-foreground">Natural Language Processing</strong>, including text normalization, classification, semantic search, and transformers</li>
             </ul>
           </div>
+
+           <div>
+            <h3 className="text-xl font-semibold text-foreground mb-4">RAG and Retrieval:</h3>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>• Hybrid BM25 plus vector search with FAISS and HNSW</li>
+              <li>• Cross-Encoder and Cohere reranking, HyDE, query-aware retrieval</li>
+              <li>•	Chunking, metadata enrichment, evidence-grounded answers and guardrails</li>
+            </ul>
+          </div>
               
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-4">MLOps and Serving:</h3>
@@ -111,7 +111,7 @@ const ServicesSection = () => {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h3 className="text-xl font-semibold text-foreground mb-4">Data Analysis & Processing:</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>• Proficient in <strong className="text-foreground">exploratory data analysis (EDA)</strong> to uncover patterns in structured and unstructured datasets</li>
@@ -120,7 +120,7 @@ const ServicesSection = () => {
               <li>• Experienced in <strong className="text-foreground">multivariate analysis, regression analysis, and time series analysis</strong></li>
               <li>• Ability to translate <strong className="text-foreground">analytical results</strong> into actionable engineering decisions</li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* What colleagues like */}
