@@ -60,7 +60,7 @@ const ResumeSection = () => {
         <div className="flex flex-wrap items-center justify-between gap-4 mb-12">
           <h2 className="section-title">Resume</h2>
           <a
-            href="https://drive.google.com/file/d/10gEj-gYe7LgoBPTmZS5L3gXUWO80zCBD/view"
+            href="https://drive.google.com/drive/folders/1StTb1uD9tgZWIECCl-PE12EbR6K-ovwa"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
