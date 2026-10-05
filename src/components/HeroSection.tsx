@@ -60,6 +60,7 @@ const HeroSection = () => {
             {displayText}
           </span>
         </p>
+        <p>I build agentic AI, RAG and machine learning systems for production</p>
       </div>
     </section>
   );
