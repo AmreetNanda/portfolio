@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const stats = [
   { value: 15, label: 'Projects', description: 'End-to-End Machine Learning, Deep Learning Projects, Natural Language Processing, Generative-AI' },
-  { value: 2, label: 'Years of Experience', description: 'Automation, Analysis, Machine Learning, Deep Learning' },
+  { value: 3, label: 'Years of Experience', description: 'Agentic AI, RAG, Machine Learning, Deep Learning, Automation' },
   { value: 3, label: 'Certifications & Recognitions', description: '' },
 ];
 
@@ -67,7 +67,7 @@ const AboutSection = () => {
           {/* Info */}
           <div className="lg:col-span-2">
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Software Development Engineer with 2+ years of experience building AI-driven automation, NLP pipelines, and GenAI systems. Strong background in Python, machine learning, and large language models, with hands-on experience in LLM fine-tuning (LoRA/PEFT), Retrieval-Augmented Generation (RAG), and intelligent automation frameworks. Adept at transforming unstructured data and complex problem statements into scalable, efficient engineering solutions that reduce manual effort and improve system reliability.
+              AI/ML Engineer with 3+ years of experience building production-oriented Generative AI, Agentic AI and Machine Learning systems. I design LangGraph multi-agent workflows with human-in-the-loop review, build hybrid RAG pipelines with reranking and guardrails, and ship them with FastAPI, Docker, MLflow and Langfuse. My main domain is automotive AI: defect triage, log intelligence and intelligent automation frameworks for Mercedes-Benz transforming unstructured data and complex problem statements into scalable, efficient engineering solutions that reduce manual effort and improve system reliability.
             </p>
 
             <div className="grid md:grid-cols-2 gap-4 mb-8">
