@@ -1,64 +1,16 @@
-import { useState } from 'react';
 import { MapPin, Mail, Linkedin, Github, Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useForm, ValidationError } from '@formspree/react';
 
-// Create a free form at https://formspree.io, then paste your form ID here (e.g. 'xyzabcde').
-const FORMSPREE_ID = 'https://formspree.io/f/mbgdjrrn';
-
+const FORMSPREE_ID = 'mbgdjrrn';
 const EMAIL = 'amreetnanda321@gmail.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/amreet-nanda-5a2507241/';
 const GITHUB_URL = 'https://github.com/AmreetNanda';
 
+const inputClass =
+  'w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary';
+
 const ContactSection = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) throw new Error('Request failed');
-
-      toast({
-        title: 'Message sent',
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch {
-      toast({
-        title: 'Could not send message',
-        description: `Please email me directly at ${EMAIL}.`,
-        variant: 'destructive',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const [state, handleSubmit] = useForm(FORMSPREE_ID);
 
   return (
     <section id="contact" className="py-20 px-4 md:px-8">
@@ -135,54 +87,84 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            {state.succeeded ? (
+              <div className="rounded-lg border border-border bg-secondary/30 p-8 text-center">
+                <h3 className="text-xl font-semibold text-foreground mb-2">Message sent</h3>
+                <p className="text-muted-foreground">
+                  Thank you for your message. I'll get back to you soon.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      className={inputClass}
+                    />
+                    <ValidationError
+                      field="name"
+                      prefix="Name"
+                      errors={state.errors}
+                      className="text-sm text-destructive mt-1"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                      className={inputClass}
+                    />
+                    <ValidationError
+                      field="email"
+                      prefix="Email"
+                      errors={state.errors}
+                      className="text-sm text-destructive mt-1"
+                    />
+                  </div>
+                </div>
+
                 <input
                   type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  name="subject"
+                  placeholder="Subject"
                   required
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className={inputClass}
                 />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                rows={6}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors disabled:opacity-50"
-              >
-                <Send className="w-4 h-4" />
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
+
+                <div>
+                  <textarea
+                    name="message"
+                    placeholder="Message"
+                    rows={6}
+                    required
+                    className={`${inputClass} resize-none`}
+                  />
+                  <ValidationError
+                    field="message"
+                    prefix="Message"
+                    errors={state.errors}
+                    className="text-sm text-destructive mt-1"
+                  />
+                </div>
+
+                <ValidationError errors={state.errors} className="text-sm text-destructive" />
+
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors disabled:opacity-50"
+                >
+                  <Send className="w-4 h-4" />
+                  {state.submitting ? 'Sending...' : 'Send Message'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
